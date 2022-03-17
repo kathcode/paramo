@@ -18,4 +18,4 @@ This project uses [`Material ui`](https://mui.com/) for themes and uses the comp
 
 ## UI styles
 
-This project uses [`styled-components`](https://www.styled-components.com/) to add additional styles to an specific components.
+This project uses [`Styled components`](https://www.styled-components.com/) to add additional styles to an specific components.
