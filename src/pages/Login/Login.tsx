@@ -1,5 +1,4 @@
 import React from 'react';
-import PropType from 'prop-types';
 import { useForm } from 'react-hook-form';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
@@ -7,7 +6,7 @@ import InputLabel from '@mui/material/InputLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 
 import { Form, BoxContent, GoogleBtn } from './login.style';
-import { ILogin, IDataSubmit } from './interfaces';
+import { ILogin } from './interfaces';
 
 const Login = ({
   hasSessionActive,
@@ -18,13 +17,14 @@ const Login = ({
   const {
     register,
     reset,
+    handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (data: IDataSubmit) => {
+  const onSubmit = async (data: any) => {
     const { email, password } = data;
-    if (hasSessionActive) singInWithEmail(email);
-    if (!hasSessionActive) createUserWithEmail(password);
+    if (hasSessionActive) singInWithEmail(email, password);
+    if (!hasSessionActive) createUserWithEmail(email, password);
 
     reset({ email: '', password: '' });
   };
@@ -59,7 +59,7 @@ const Login = ({
           variant="contained"
           type="submit"
           size="large"
-          onClick={onSubmit}
+          onClick={handleSubmit(onSubmit)}
         >
           {hasSessionActive ? 'Login' : 'Create account'}
         </Button>
