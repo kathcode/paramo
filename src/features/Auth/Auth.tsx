@@ -5,7 +5,7 @@ import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
 
-import { Form, BoxContent, GoogleBtn } from './Authentication.style';
+import { Form, BoxContent, GoogleBtn } from './Auth.style';
 import { ILogin } from './interfaces';
 
 const Login = ({
