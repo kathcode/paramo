@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
-import Login from './Login';
+import Login from './Authentication';
 import { signInWithGoogle } from '../../services/firebase';
 
 describe('Login', () => {

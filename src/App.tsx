@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Login from './pages/Login/Login';
+import Authentication from './features/Authentication/Authentication';
 
 import {
   signInWithGoogle,
@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <h1>Paramo</h1>
-      <Login
+      <Authentication
         hasSessionActive
         signInWithGoogle={signInWithGoogle}
         createUserWithEmail={createUserWithEmail}

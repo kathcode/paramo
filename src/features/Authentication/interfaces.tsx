@@ -4,8 +4,3 @@ export interface ILogin {
   singInWithEmail: any;
   createUserWithEmail: any;
 }
-
-export interface IDataSubmit {
-  email: string;
-  password: string;
-}
