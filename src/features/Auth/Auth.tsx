@@ -4,26 +4,39 @@ import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import OutlinedInput from '@mui/material/OutlinedInput';
+// Store
+import { useDispatch } from 'react-redux';
+import { updateUserData } from '../../store/features/auth/authSlice';
 
 import { Form, BoxContent, GoogleBtn } from './Auth.style';
-import { ILogin } from './interfaces';
+import { IAuth } from './interfaces';
 
 const Login = ({
   hasSessionActive,
   signInWithGoogle,
   singInWithEmail,
   createUserWithEmail,
-}: ILogin) => {
+}: IAuth) => {
   const {
     register,
     reset,
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const dispatch = useDispatch();
 
   const onSubmit = async (data: any) => {
     const { email, password } = data;
-    if (hasSessionActive) singInWithEmail(email, password);
+    if (hasSessionActive) {
+      const response = await singInWithEmail(email, password);
+      const authUserData = {
+        email: response.email,
+        accessToken: response.accessToken,
+        displayName: response.displayName || '',
+      };
+      dispatch(updateUserData(authUserData));
+    }
+
     if (!hasSessionActive) createUserWithEmail(email, password);
 
     reset({ email: '', password: '' });
