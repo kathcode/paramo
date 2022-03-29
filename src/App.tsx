@@ -11,6 +11,7 @@ import {
 function App() {
   return (
     <div className="App">
+      <h1>Paramo</h1>
       <Login
         hasSessionActive
         signInWithGoogle={signInWithGoogle}
